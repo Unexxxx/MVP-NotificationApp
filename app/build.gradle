@@ -7,8 +7,8 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.unex.mvp_notificationapp"
-        minSdkVersion 19
+        applicationId "com.unex.notificationapp"
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -30,10 +30,29 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //date Picker
+    implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.4'
+
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //Collapsible Calendar
+    implementation 'com.github.shrikanth7698:Collapsible-Calendar-View-Android:v1.0.3'
+
+    //Number picker
+    implementation 'com.shawnlin:number-picker:2.4.12'
+
+    //Alert Dialog
+    implementation 'com.github.salehyarahmadi:AndExAlertDialog:v1.0.1'
+
+    //ScrollView Bounce effect
+    compile 'me.everything:overscroll-decor-android:1.0.4'
+
 }
