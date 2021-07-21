@@ -8,8 +8,8 @@
     <TableRow>
 
         <TextView
-            android:id="@+id/tv_back"
-            android:onClick="onClickBack"
+            android:id="@+id/tv_cancel"
+            android:onClick="onClickCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancel"
