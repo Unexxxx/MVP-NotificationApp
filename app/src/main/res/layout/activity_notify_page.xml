@@ -15,7 +15,7 @@
 
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_addNotif"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="bottom|end"
