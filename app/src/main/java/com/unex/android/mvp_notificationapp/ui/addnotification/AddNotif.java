@@ -2,6 +2,9 @@ package com.unex.android.mvp_notificationapp.ui.addnotification;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +21,7 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
 
     CollapsibleCalendar viewCalendar;
     NumberPicker npHour, npMin;
-    TextView tvTitle, tvDescription, tvVenue;
+    EditText etTitle, etDescription, etVenue;
     TextView tvCancel, tvDone;
 
     @Override
@@ -38,9 +41,9 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
         viewCalendar = findViewById(R.id.calendarView);
         npHour = findViewById(R.id.np_hour);
         npMin = findViewById(R.id.np_min);
-        tvTitle = findViewById(R.id.tv_title);
-        tvDescription = findViewById(R.id.tv_description);
-        tvVenue = findViewById(R.id.tv_venue);
+        etTitle = findViewById(R.id.et_title);
+        etDescription = findViewById(R.id.et_description);
+        etVenue = findViewById(R.id.et_venue);
         tvCancel = findViewById(R.id.tv_cancel);
         tvDone = findViewById(R.id.tv_done);
 
@@ -57,9 +60,9 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
         tvDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = tvTitle.getText().toString();
-                String description = tvDescription.getText().toString();
-                String venue = tvVenue.getText().toString();
+                String title = etTitle.getText().toString();
+                String description = etDescription.getText().toString();
+                String venue = etVenue.getText().toString();
 
                 presenter.checkFields(title, description, venue);
 
@@ -71,6 +74,6 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
 
     @Override
     public void notifyFieldsCannotBeEmpty() {
-        Toast.makeText(AddNotif.this, "Done!!!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AddNotif.this, "Fields cannot be empty", Toast.LENGTH_SHORT).show();
     }
 }
