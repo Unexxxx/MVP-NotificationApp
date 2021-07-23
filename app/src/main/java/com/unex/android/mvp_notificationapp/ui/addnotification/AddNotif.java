@@ -1,5 +1,6 @@
 package com.unex.android.mvp_notificationapp.ui.addnotification;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,11 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.shawnlin.numberpicker.NumberPicker;
 import com.shrikanthravi.collapsiblecalendarview.widget.CollapsibleCalendar;
+import com.unex.android.mvp_notificationapp.data.NotifFields;
+import com.unex.mvp_notificationapp.MainActivity;
 import com.unex.mvp_notificationapp.R;
 
 public class AddNotif extends AppCompatActivity implements AddNotifContract.View {
 
-    private AddNotifContract.Presenter presenter = new AddNotifPresenter(AddNotif.this);
+    AddNotifPresenter presenter;
 
     CollapsibleCalendar viewCalendar;
     NumberPicker npHour, npMin;
@@ -31,6 +34,8 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+
+        presenter = new AddNotifPresenter(this);
 
         initViews();
         initListeners();
@@ -64,8 +69,8 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
                 String description = etDescription.getText().toString();
                 String venue = etVenue.getText().toString();
 
-                presenter.checkFields(title, description, venue);
-
+                NotifFields notifFields = new NotifFields(title, description, venue);
+                presenter.done(notifFields);
 
             }
         });
@@ -73,7 +78,13 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
 
 
     @Override
-    public void notifyFieldsCannotBeEmpty() {
-        Toast.makeText(AddNotif.this, "Fields cannot be empty", Toast.LENGTH_SHORT).show();
+    public void onSuccess() {
+        startActivity(new Intent(this, MainActivity.class));
+        Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFailed(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

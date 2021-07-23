@@ -3,10 +3,16 @@ package com.unex.android.mvp_notificationapp.ui.addnotification;
 public interface AddNotifContract {
 
     interface View{
-        void notifyFieldsCannotBeEmpty();
+
+        void onSuccess();
+
+        void onFailed(String message);
     }
 
     interface Presenter{
-        void checkFields(String title, String description, String venue);
+
+        void onSuccess();
+
+        void onFailed(String message);
     }
 }
