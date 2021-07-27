@@ -130,13 +130,26 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
                 NotifFields notifFields = new NotifFields(title, description, venue);
                 presenter.done(notifFields);
 
-                saveToSharedPref(title +"\n"+ (day.getMonth() + 1) + "/" + day.getDay() + "/" + day.getYear() + "\n" + timeH + ":" + timeM);
+                presenter.saveToSharedPref(title +"\n"+ (day.getMonth() + 1) + "/" + day.getDay() + "/" + day.getYear() + "\n" + timeH + ":" + timeM);
+//                saveToSharedPref(title +"\n"+ (day.getMonth() + 1) + "/" + day.getDay() + "/" + day.getYear() + "\n" + timeH + ":" + timeM);
 
             }
         });
     }
 
-    private void saveToSharedPref(String activityData){
+    @Override
+    public void onSuccess() {
+        startActivity(new Intent(this, MainActivity.class));
+        Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFailed(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void saveToSharedPref(String activityData) {
         Gson gson = new Gson();
 
         SharedPreferences aklatSharedPref = getSharedPreferences("notification", Context.MODE_PRIVATE);
@@ -152,17 +165,5 @@ public class AddNotif extends AppCompatActivity implements AddNotifContract.View
         SharedPreferences.Editor editor = aklatSharedPref.edit();
         editor.putString("notifData", dataString);
         editor.commit();
-    }
-
-
-    @Override
-    public void onSuccess() {
-        startActivity(new Intent(this, MainActivity.class));
-        Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onFailed(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -7,6 +7,8 @@ public interface AddNotifContract {
         void onSuccess();
 
         void onFailed(String message);
+
+        void saveToSharedPref(String activityData);
     }
 
     interface Presenter{
@@ -14,5 +16,7 @@ public interface AddNotifContract {
         void onSuccess();
 
         void onFailed(String message);
+
+        void saveToSharedPref(String activityData);
     }
 }

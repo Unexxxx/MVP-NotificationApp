@@ -25,8 +25,15 @@ public class AddNotifPresenter implements AddNotifContract.Presenter {
         view.onFailed(message);
     }
 
+    @Override
+    public void saveToSharedPref(String activityData) {
+        view.saveToSharedPref(activityData);
+    }
+
+
     public AddNotifPresenter(AddNotifContract.View view){
         this.view = view;
         notifPresenter = new NotifPresenter(this);
     }
+
 }

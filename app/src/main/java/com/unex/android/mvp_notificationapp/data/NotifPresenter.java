@@ -1,13 +1,20 @@
 package com.unex.android.mvp_notificationapp.data;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.unex.android.mvp_notificationapp.ui.addnotification.AddNotifContract;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NotifPresenter {
 
     private AddNotifContract.Presenter presenter;
+
 
     public NotifPresenter(AddNotifContract.Presenter presenter) {
         this.presenter = presenter;
