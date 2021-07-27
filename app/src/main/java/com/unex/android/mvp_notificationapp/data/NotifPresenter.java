@@ -1,7 +1,7 @@
 package com.unex.android.mvp_notificationapp.data;
-
+import android.content.Context;
 import android.text.TextUtils;
-import android.util.Patterns;
+
 
 import com.unex.android.mvp_notificationapp.ui.addnotification.AddNotifContract;
 
@@ -28,7 +28,7 @@ public class NotifPresenter {
         String venue = notifFields.getVenue();
 
         if(TextUtils.isEmpty(title) && TextUtils.isEmpty(description) && TextUtils.isEmpty(venue)){
-            presenter.onFailed("Please input fields");
+            presenter.onFailed("Fields cannot be empty");
             return true;
         }
 
@@ -49,4 +49,5 @@ public class NotifPresenter {
         return false;
 
     }
+
 }

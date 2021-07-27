@@ -22,7 +22,7 @@ public class AddNotifPresenter implements AddNotifContract.Presenter {
 
     @Override
     public void onFailed(String message) {
-        view.onFailed(message );
+        view.onFailed(message);
     }
 
     public AddNotifPresenter(AddNotifContract.View view){
